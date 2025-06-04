@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn8wu73keb3yo"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_egkhf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74dmv"]
+size = Vector2(1935, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8con"]
+size = Vector2(17, 1090)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_egkhf")
+
+[node name="FoodSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(962, -9)
+shape = SubResource("RectangleShape2D_74dmv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(966, 1090)
+shape = SubResource("RectangleShape2D_74dmv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-9.5, 541)
+shape = SubResource("RectangleShape2D_y8con")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1930, 532)
+shape = SubResource("RectangleShape2D_y8con")
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+z_index = 1000
+offset_right = 1920.0
+offset_bottom = 1079.0
+theme_override_font_sizes/font_size = 100
+text = "Game Over
+Press R to Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="FoodSpawnTimer" to="." method="_on_food_spawn_timer_timeout"]

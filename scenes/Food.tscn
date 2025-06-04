@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0yy33fliq4cc"]
+
+[ext_resource type="Script" path="res://scripts/Food.gd" id="1_8v5uc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrahp"]
+radius = 5.0
+
+[node name="Food" type="Area2D"]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_8v5uc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hrahp")
